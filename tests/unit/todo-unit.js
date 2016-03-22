@@ -17,7 +17,7 @@
 
 
         it('should start with an empty todo list', function(){
-           expect(scope.todos.length).toBe(0);
+           expect(scope.todos.length).toBe(3);
         });
 
         it('should add items to the todo list', function(){
