@@ -6,20 +6,32 @@
 
     describe('Verify todoApp', function(){
 
-        var scope, ctrl;
+        var ctrl, scope;
 
         beforeEach(module('todoApp'));
 
-        beforeEach(inject(function($controller) {
-            scope = {};
+        beforeEach(inject(function($controller, $rootScope) {
+            scope = $rootScope.$new();
             ctrl = $controller('todoAppCtrl', {$scope:scope});
         }));
 
 
-        it('starts with 3 items', function(){
-           expect(scope.todos.length).toBe(2);
+        it('should start with an empty todo list', function(){
+           expect(scope.todos.length).toBe(0);
+        });
 
-       })
+        it('should add items to the todo list', function(){
+            scope.todoInput = "Buy tortillas";
+            scope.addTodo();
+            expect(scope.todos.length).toBe(1);
+        });
+
+        it('should remove items from the todo list', function(){
+            scope.todoInput = "Buy coyotas";
+            scope.addTodo();
+            scope.removeTodo(0);
+            expect(scope.todos.length).toBe(0);
+        });
     });
 
 }());

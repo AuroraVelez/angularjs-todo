@@ -5,16 +5,17 @@
 
 angular
     .module('todoApp', [])
-    .controller("todoAppCtrl", ["$scope", function($scope){
-        $scope.todos = ['Item 1', 'Item 2', 'Item 3'];
+    .controller("todoAppCtrl", ["$scope", function($scope, element){
+        $scope.todos = [];
+        var errorAlert = angular.element(document.getElementById("errorAlert"));
 
         $scope.addTodo = function (){
             if($scope.todoInput !== undefined && $scope.todoInput !== '' ) {
                 $scope.todos.push($scope.todoInput);
                 $scope.todoInput = '';
-                $scope.isCollapsed = true;
+                errorAlert.css("display","none");
             }else{
-                $scope.isCollapsed = false;
+                errorAlert.css("display","block");
             }
         };
 
