@@ -12,7 +12,7 @@
         it('should add a new todo item', function(){
             element(by.model('todoInput')).sendKeys('Send work email');
             element(by.id("btnAdd")).click();
-            expect(element(by.id("todo0")).getAttribute('value')).toEqual('Send work email -bad');
+            expect(element(by.id("todo0")).getAttribute('value')).toEqual('Send work emails');
         });
 
         // Planned/pending scenarios

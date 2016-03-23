@@ -9,20 +9,15 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['Gruntfile.js', 'app/**/*.js', 'tests/**/*.js'],
-            options: {
-                globals: {
-                    jQuery: true
-                }
-            }
+            files: ['Gruntfile.js', 'app/**/*.js', 'tests/**/*.js']
         },
         clean: {
-            tests: ['tmp']
+            tests: ['./tests/e2e/results']
         },
         protractor: {
             options: {
                 // Location of your protractor config file
-                configFile: "tests/protractor.conf.js",
+                configFile: "./tests/protractor.conf.js",
 
                 // Do you want the output to use fun colors?
                 noColor: false,
@@ -36,7 +31,7 @@ module.exports = function(grunt) {
             e2e: {
                 options: {
                     // Stops Grunt process if a test fails
-                    keepAlive: true
+                    keepAlive: false
                 }
             },
             continuous: {
@@ -71,6 +66,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-protractor-runner');
 
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('e2e-test', ['clean', 'protractor:e2e', 'watch:protractor']);
+    grunt.registerTask('e2e-test', ['protractor:e2e']);
 
 };
