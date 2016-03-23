@@ -10,7 +10,7 @@ angular
         var errorAlert = angular.element(document.getElementById("errorAlert"));
 
         $scope.addTodo = function (){
-            if($scope.todoInput !== undefined && $scope.todoInput !== '' ) {
+            if($scope.todoInput !== undefined && $scope.todoInput.trim() !== '' ) {
                 $scope.todos.push($scope.todoInput);
                 $scope.todoInput = '';
                 errorAlert.css("display","none");
