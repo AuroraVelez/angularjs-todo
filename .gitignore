@@ -6,4 +6,5 @@ tmp
 .DS_Store
 .idea
 bootstrap-3.3.6/
+npm-debug.log
 
