@@ -14,6 +14,12 @@ module.exports = function(grunt) {
         clean: {
             tests: ['./tests/e2e/results']
         },
+        karma: {
+            unit: {
+                configFile: './tests/karma.conf.js',
+                singleRun: true
+            }
+        },
         protractor: {
             options: {
                 // Location of your protractor config file
@@ -64,8 +70,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('e2e-test', ['clean','protractor:e2e']);
+    grunt.registerTask('test:unit', ['karma:unit']);
+    grunt.registerTask('test:e2e', ['clean','protractor:e2e']);
 
 };
