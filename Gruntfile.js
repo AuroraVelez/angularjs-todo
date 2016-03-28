@@ -66,6 +66,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-protractor-runner');
 
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('e2e-test', ['protractor:e2e']);
+    grunt.registerTask('e2e-test', ['clean','protractor:e2e']);
 
 };
