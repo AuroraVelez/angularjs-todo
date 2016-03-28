@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         karma: {
             unit: {
                 configFile: './tests/karma.conf.js',
-                singleRun: true
+                autoWatch: true
             }
         },
         protractor: {
@@ -55,11 +55,11 @@ module.exports = function(grunt) {
                 tasks: ['jshint']
             },
             karma: {
-                files: ['app/js/**/*.js', 'tests/unit/*.js'],
+                files: ['app/scripts/**/*.js', 'tests/unit/*.js'],
                 tasks: ['karma:continuous:run']
             },
             protractor: {
-                files: ['app/js/**/*.js', 'tests/e2e/*.js'],
+                files: ['app/scripts/**/*.js', 'tests/e2e/*.js'],
                 tasks: ['protractor:continuous']
             }
         }
@@ -74,6 +74,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['jshint']);
     grunt.registerTask('test:unit', ['karma:unit']);
-    grunt.registerTask('test:e2e', ['clean','protractor:e2e']);
+    grunt.registerTask('test:e2e', ['clean','protractor:e2e', 'watch:protractor']);
 
 };

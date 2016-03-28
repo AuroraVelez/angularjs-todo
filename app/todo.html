@@ -29,7 +29,7 @@
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="item in todos">
                     <input id="todo{{$index}}" type="text" value="{{item}}" style="border: none;">
-                    <button class="btn btn-danger badge" ng-click="removeTodo($index)">X</button>
+                    <button id="remove{{$index}}" class="btn btn-danger badge" ng-click="removeTodo($index)">X</button>
                 </li>
             </ul>
         </div>
