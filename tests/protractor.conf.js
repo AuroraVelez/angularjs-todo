@@ -30,8 +30,8 @@ exports.config = {
       onPrepare: function() {
           jasmine.getEnv().addReporter(
               new Jasmine2HtmlReporter({
-                  savePath: './e2e/results',
-                  screenshotsFolder: 'images',
+                  savePath: './tests/e2e/results',
+                  screenshotsFolder: './tests/e2e/results/images',
                   takeScreenshots: true
 
               })
