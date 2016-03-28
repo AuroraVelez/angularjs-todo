@@ -45,13 +45,6 @@
             scope.todos[0] = "Buy chiles serranos";
             expect(scope.todos[0]).toBe("Buy chiles serranos");
         });
-
-        it('should not edit a todo item to save it empty', function(){
-            scope.todoInput = "Pay bank";
-            scope.addTodo();
-            scope.todo[0] = " ";
-            expect(scope.todos[0].trim()).not.toBe("");
-        });
     });
 
 }());
