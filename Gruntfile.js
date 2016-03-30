@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             e2e: {
                 options: {
                     // Stops Grunt process if a test fails
-                    keepAlive: false
+                    keepAlive: true
                 }
             },
             continuous: {
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('test:unit', ['karma:unit']);
+    grunt.registerTask('test:unit', ['karma:unit','watch:karma']);
     grunt.registerTask('test:e2e', ['clean','protractor:e2e', 'watch:protractor']);
 
 };

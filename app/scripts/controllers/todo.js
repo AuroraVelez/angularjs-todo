@@ -18,6 +18,11 @@ angular
                 errorAlert.css("display","block");
             }
         };
+        
+        $scope.editTodo = function(index) {
+           var res =  prompt();
+            $scope.todos.splice(index, 1, res);
+        };
 
         $scope.removeTodo = function (index){
             $scope.todos.splice(index,1);
