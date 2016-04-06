@@ -1,6 +1,25 @@
 var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 
-exports.config = {
+var browsers = {
+    firefox: {
+        name: 'Firefox',
+        browserName: 'firefox'
+    },
+    chrome: {
+        name: 'Chrome',
+        browserName: 'chrome'
+    },
+    ios: {
+        name: 'iOS 7 - iPad',
+        platformName: 'iOS',
+        platformVersion: '8.1',
+        deviceName: 'iPad Retina',
+        browserName: 'Safari'
+        //orientation: 'landscape'
+    }
+};
+
+var config = {
       allScriptsTimeout: 11000,
 
       specs: [
@@ -11,7 +30,7 @@ exports.config = {
             'browserName': 'chrome'
       },
 
-      baseUrl: 'http://localhost:8000/app/',
+      baseUrl: 'http://localhost:8000',
 
       framework: 'jasmine',
 
@@ -36,5 +55,24 @@ exports.config = {
 
               })
           );
+          var wd = require('wd'),
+              protractor = require('protractor'),
+              wdBridge = require('wd-bridge')(protractor, wd);
+          wdBridge.initFromProtractor(exports.config);
       }
 };
+
+
+if (process.argv[3] === '--chrome') {
+    config.capabilities = browsers.chrome;
+} else if (process.argv[3] === '--ios') {
+    config.seleniumAddress = 'http://localhost:4723/wd/hub';
+    config.capabilities = browsers.ios;
+} else {
+    config.multiCapabilities = [
+        browsers.firefox,
+        browsers.chrome
+    ]
+}
+
+exports.config = config;
